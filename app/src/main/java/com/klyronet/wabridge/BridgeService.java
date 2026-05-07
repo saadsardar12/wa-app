@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.PowerManager;
 import android.util.Log;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
@@ -21,7 +22,11 @@ public class BridgeService extends Service {
     private static WebSocketClient wsClient;
     private Handler handler = new Handler(Looper.getMainLooper());
     private String deviceId;
+    private PowerManager.WakeLock wakeLock;
     public static BridgeService getInstance() { return instance; }
+    public static void sendToServer(String message) {
+        if (wsClient != null && wsClient.isOpen()) wsClient.send(message);
+    }
     @Override
     public void onCreate() {
         super.onCreate();
@@ -29,14 +34,28 @@ public class BridgeService extends Service {
         deviceId = getDeviceId();
         createNotificationChannel();
         startForeground(1, buildNotification("Connecting..."));
+        acquireWakeLock();
         connect();
+        startPing();
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) { return START_STICKY; }
     @Override
     public IBinder onBind(Intent intent) { return null; }
     @Override
-    public void onDestroy() { super.onDestroy(); if (wsClient != null) wsClient.close(); instance = null; }
+    public void onDestroy() {
+        super.onDestroy();
+        if (wsClient != null) wsClient.close();
+        if (wakeLock != null && wakeLock.isHeld()) wakeLock.release();
+        instance = null;
+        Intent i = new Intent(this, BridgeService.class);
+        startService(i);
+    }
+    private void acquireWakeLock() {
+        PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
+        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "WABridge:WakeLock");
+        wakeLock.acquire();
+    }
     private void connect() {
         try {
             URI uri = new URI(SERVER_URL + "?device=" + deviceId);
@@ -44,7 +63,7 @@ public class BridgeService extends Service {
                 @Override
                 public void onOpen(ServerHandshake h) {
                     Log.d(TAG, "Connected!");
-                    updateNotification("Connected to CRM ✅");
+                    updateNotification("Connected to CRM");
                     try {
                         JSONObject reg = new JSONObject();
                         reg.put("type", "register");
@@ -67,21 +86,29 @@ public class BridgeService extends Service {
                 @Override
                 public void onClose(int code, String reason, boolean remote) {
                     updateNotification("Reconnecting...");
-                    handler.postDelayed(() -> connect(), 3000);
+                    handler.postDelayed(() -> connect(), 2000);
                 }
                 @Override
                 public void onError(Exception e) {
-                    handler.postDelayed(() -> connect(), 5000);
+                    handler.postDelayed(() -> connect(), 2000);
                 }
             };
+            wsClient.setConnectionLostTimeout(30);
             wsClient.connect();
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
-            handler.postDelayed(this::connect, 5000);
+            handler.postDelayed(this::connect, 2000);
         }
     }
-    public static void sendToServer(String message) {
-        if (wsClient != null && wsClient.isOpen()) wsClient.send(message);
+    private void startPing() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (wsClient != null && wsClient.isOpen()) {
+                    try { wsClient.send("{\"type\":\"ping\"}"); } catch(Exception e) {}
+                } else { connect(); }
+                handler.postDelayed(this, 15000);
+            }
+        }, 15000);
     }
     private String getDeviceId() {
         android.content.SharedPreferences prefs = getSharedPreferences("wa_bridge", MODE_PRIVATE);
