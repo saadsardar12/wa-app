@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#075e54">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WA Bridge"
+        android:textSize="28sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_marginBottom="40dp"/>
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please enable Accessibility Service first."
+        android:textSize="14sp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:background="#1a7d38"
+        android:padding="12dp"
+        android:layout_marginBottom="24dp"/>
+    <Button
+        android:id="@+id/accessibilityBtn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Enable Accessibility"
+        android:textSize="16sp"
+        android:background="#25d366"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="12dp"/>
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Connect to CRM"
+        android:textSize="16sp"
+        android:background="#ffffff"
+        android:textColor="#075e54"
+        android:enabled="false"/>
+</LinearLayout>

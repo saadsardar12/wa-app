@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.klyronet.wabridge.app-merged_res-5:/layout_activity_main.xml.flat",
+        "source": "com.klyronet.wabridge.app-main-7:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/root/.gradle/daemon/7.5/com.klyronet.wabridge.app-merged_res-5:/xml_accessibility_config.xml.flat",
+        "source": "/root/.gradle/daemon/7.5/com.klyronet.wabridge.app-main-7:/xml/accessibility_config.xml"
+    }
+]

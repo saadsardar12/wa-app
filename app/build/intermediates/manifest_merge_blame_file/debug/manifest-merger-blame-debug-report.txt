@@ -1,0 +1,136 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.klyronet.wabridge"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+8-->/opt/wa-app/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/opt/wa-app/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/opt/wa-app/app/src/main/AndroidManifest.xml:4:5-67
+11-->/opt/wa-app/app/src/main/AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+12-->/opt/wa-app/app/src/main/AndroidManifest.xml:5:5-77
+12-->/opt/wa-app/app/src/main/AndroidManifest.xml:5:22-74
+13    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+13-->/opt/wa-app/app/src/main/AndroidManifest.xml:6:5-81
+13-->/opt/wa-app/app/src/main/AndroidManifest.xml:6:22-78
+14    <uses-permission android:name="android.permission.WAKE_LOCK" />
+14-->/opt/wa-app/app/src/main/AndroidManifest.xml:7:5-68
+14-->/opt/wa-app/app/src/main/AndroidManifest.xml:7:22-65
+15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+15-->/opt/wa-app/app/src/main/AndroidManifest.xml:8:5-79
+15-->/opt/wa-app/app/src/main/AndroidManifest.xml:8:22-76
+16
+17    <permission
+17-->[androidx.core:core:1.9.0] /root/.gradle/caches/transforms-3/ec4f76f6c0c02de8ba18086e7bd9baf5/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+18        android:name="com.klyronet.wabridge.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+18-->[androidx.core:core:1.9.0] /root/.gradle/caches/transforms-3/ec4f76f6c0c02de8ba18086e7bd9baf5/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+19        android:protectionLevel="signature" />
+19-->[androidx.core:core:1.9.0] /root/.gradle/caches/transforms-3/ec4f76f6c0c02de8ba18086e7bd9baf5/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+20
+21    <uses-permission android:name="com.klyronet.wabridge.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+21-->[androidx.core:core:1.9.0] /root/.gradle/caches/transforms-3/ec4f76f6c0c02de8ba18086e7bd9baf5/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+21-->[androidx.core:core:1.9.0] /root/.gradle/caches/transforms-3/ec4f76f6c0c02de8ba18086e7bd9baf5/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+22
+23    <application
+23-->/opt/wa-app/app/src/main/AndroidManifest.xml:9:5-42:19
+24        android:allowBackup="true"
+24-->/opt/wa-app/app/src/main/AndroidManifest.xml:10:9-35
+25        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+25-->[androidx.core:core:1.9.0] /root/.gradle/caches/transforms-3/ec4f76f6c0c02de8ba18086e7bd9baf5/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+26        android:debuggable="true"
+27        android:extractNativeLibs="false"
+28        android:label="WA Bridge"
+28-->/opt/wa-app/app/src/main/AndroidManifest.xml:11:9-34
+29        android:theme="@style/Theme.AppCompat.Light" >
+29-->/opt/wa-app/app/src/main/AndroidManifest.xml:12:9-53
+30        <activity
+30-->/opt/wa-app/app/src/main/AndroidManifest.xml:13:9-20:20
+31            android:name="com.klyronet.wabridge.MainActivity"
+31-->/opt/wa-app/app/src/main/AndroidManifest.xml:14:13-41
+32            android:exported="true" >
+32-->/opt/wa-app/app/src/main/AndroidManifest.xml:15:13-36
+33            <intent-filter>
+33-->/opt/wa-app/app/src/main/AndroidManifest.xml:16:13-19:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->/opt/wa-app/app/src/main/AndroidManifest.xml:17:17-69
+34-->/opt/wa-app/app/src/main/AndroidManifest.xml:17:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->/opt/wa-app/app/src/main/AndroidManifest.xml:18:17-77
+36-->/opt/wa-app/app/src/main/AndroidManifest.xml:18:27-74
+37            </intent-filter>
+38        </activity>
+39
+40        <service
+40-->/opt/wa-app/app/src/main/AndroidManifest.xml:21:9-31:19
+41            android:name="com.klyronet.wabridge.WAAccessibilityService"
+41-->/opt/wa-app/app/src/main/AndroidManifest.xml:22:13-51
+42            android:exported="true"
+42-->/opt/wa-app/app/src/main/AndroidManifest.xml:23:13-36
+43            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+43-->/opt/wa-app/app/src/main/AndroidManifest.xml:24:13-79
+44            <intent-filter>
+44-->/opt/wa-app/app/src/main/AndroidManifest.xml:25:13-27:29
+45                <action android:name="android.accessibilityservice.AccessibilityService" />
+45-->/opt/wa-app/app/src/main/AndroidManifest.xml:26:17-92
+45-->/opt/wa-app/app/src/main/AndroidManifest.xml:26:25-89
+46            </intent-filter>
+47
+48            <meta-data
+48-->/opt/wa-app/app/src/main/AndroidManifest.xml:28:13-30:64
+49                android:name="android.accessibilityservice"
+49-->/opt/wa-app/app/src/main/AndroidManifest.xml:29:17-60
+50                android:resource="@xml/accessibility_config" />
+50-->/opt/wa-app/app/src/main/AndroidManifest.xml:30:17-61
+51        </service>
+52        <service
+52-->/opt/wa-app/app/src/main/AndroidManifest.xml:32:9-34:40
+53            android:name="com.klyronet.wabridge.BridgeService"
+53-->/opt/wa-app/app/src/main/AndroidManifest.xml:33:13-42
+54            android:exported="false" />
+54-->/opt/wa-app/app/src/main/AndroidManifest.xml:34:13-37
+55
+56        <receiver
+56-->/opt/wa-app/app/src/main/AndroidManifest.xml:35:9-41:20
+57            android:name="com.klyronet.wabridge.BootReceiver"
+57-->/opt/wa-app/app/src/main/AndroidManifest.xml:36:13-41
+58            android:exported="true" >
+58-->/opt/wa-app/app/src/main/AndroidManifest.xml:37:13-36
+59            <intent-filter>
+59-->/opt/wa-app/app/src/main/AndroidManifest.xml:38:13-40:29
+60                <action android:name="android.intent.action.BOOT_COMPLETED" />
+60-->/opt/wa-app/app/src/main/AndroidManifest.xml:39:17-79
+60-->/opt/wa-app/app/src/main/AndroidManifest.xml:39:25-76
+61            </intent-filter>
+62        </receiver>
+63
+64        <provider
+64-->[androidx.emoji2:emoji2:1.2.0] /root/.gradle/caches/transforms-3/27ea2d1fe40306b6a6ebc7514e2ae640/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+65            android:name="androidx.startup.InitializationProvider"
+65-->[androidx.emoji2:emoji2:1.2.0] /root/.gradle/caches/transforms-3/27ea2d1fe40306b6a6ebc7514e2ae640/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+66            android:authorities="com.klyronet.wabridge.androidx-startup"
+66-->[androidx.emoji2:emoji2:1.2.0] /root/.gradle/caches/transforms-3/27ea2d1fe40306b6a6ebc7514e2ae640/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+67            android:exported="false" >
+67-->[androidx.emoji2:emoji2:1.2.0] /root/.gradle/caches/transforms-3/27ea2d1fe40306b6a6ebc7514e2ae640/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+68            <meta-data
+68-->[androidx.emoji2:emoji2:1.2.0] /root/.gradle/caches/transforms-3/27ea2d1fe40306b6a6ebc7514e2ae640/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+69                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+69-->[androidx.emoji2:emoji2:1.2.0] /root/.gradle/caches/transforms-3/27ea2d1fe40306b6a6ebc7514e2ae640/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+70                android:value="androidx.startup" />
+70-->[androidx.emoji2:emoji2:1.2.0] /root/.gradle/caches/transforms-3/27ea2d1fe40306b6a6ebc7514e2ae640/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+71            <meta-data
+71-->[androidx.lifecycle:lifecycle-process:2.4.1] /root/.gradle/caches/transforms-3/1d1173f99a1313055c26367e9296308a/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+72                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+72-->[androidx.lifecycle:lifecycle-process:2.4.1] /root/.gradle/caches/transforms-3/1d1173f99a1313055c26367e9296308a/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+73                android:value="androidx.startup" />
+73-->[androidx.lifecycle:lifecycle-process:2.4.1] /root/.gradle/caches/transforms-3/1d1173f99a1313055c26367e9296308a/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+74        </provider>
+75    </application>
+76
+77</manifest>
